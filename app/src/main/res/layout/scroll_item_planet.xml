@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#eef"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:elevation="10dp"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/txtName"
+        android:background="#1000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="1dp"
+        tools:text="Planet Name"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/txtDistance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Distance"
+        android:paddingLeft="10dp" />
+    <TextView
+        android:id="@+id/txtGravity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Gravity"
+        android:paddingLeft="10dp" />
+    <TextView
+        android:id="@+id/txtDiameter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Diameter"
+        android:paddingLeft="10dp" />
+
+</LinearLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.all.recyclercache.MainActivity">
+
+    <TextView
+        android:id="@+id/header"
+        style="@style/text26"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00f"
+        android:text="Test RecyclerView Caching" />
+
+    <CheckBox
+        android:id="@+id/uniqueViewTypeCB"
+        style="@style/text26B"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:text="Unique View Type" />
+
+    <Button
+        android:id="@+id/runGC"
+        style="@style/text26B"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Run garbarge collector"
+        android:visibility="gone" />
+
+    <TextView
+        style="@style/text26B"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select List Size:" />
+
+    <RadioGroup
+        android:id="@+id/rb_list_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_none"
+            style="@style/rbtns"
+            android:tag="0"
+            android:text="None" />
+
+        <RadioButton
+            android:id="@+id/rb_5"
+            style="@style/rbtns"
+            android:tag="5"
+            android:text="5" />
+
+        <RadioButton
+            android:id="@+id/rb_50"
+            style="@style/rbtns"
+            android:checked="true"
+            android:tag="50"
+            android:text="50" />
+
+        <RadioButton
+            android:id="@+id/rb_200"
+            style="@style/rbtns"
+            android:tag="200"
+            android:text="200" />
+    </RadioGroup>
+
+    <include layout="@layout/content_scrolling" />
+
+    <TextView
+        android:id="@+id/footer"
+        style="@style/text32"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00f"
+        android:text="--Footer--" />
+</LinearLayout>

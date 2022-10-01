@@ -1,0 +1,19 @@
+cd projects/projects-android/_all/
+
+cd all-uitest/
+git init
+git remote add origin https://landenlabs@github.com/landenlabs/all-uitest
+./gradlew clean
+git add .
+git commit -m "first commit"
+
+# go onto GIT for landenlabs and make all-uitest repro
+
+git push -u origin master
+   password token:
+   ec26390f3685fb1b6c0f15d59eb2d9f7596926c5
+   
+      
+   Travis public key public repo access only GITHUB_TOKEN
+   049bb351bff67df96f1cb81d8d1fff77786c4e7d
+   
