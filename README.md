@@ -72,6 +72,7 @@ Nothing is reused, but constructors only called once per item.
 When the RecyclerView does not have to scroll because all items are in view, then every ViewHolder is created once. 
 There is no reuse and ViewType has no impact on memory savings. 
 
+<p float="left">
 <img src="images/reuse-5.jpg" width="300">
-
 <img src="images/unique-5.jpg" width="300">
+</p>
