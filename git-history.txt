@@ -1,0 +1,100 @@
+    42	17:43	git init
+    43	17:43	git remote add origin https://landenlabs2@github.com/landenlabs2/all_recyclercache.git
+    44	17:43	rm -rf .git
+    45	17:43	git init
+    46	17:43	git remote add origin https://landenlabs2@github.com/landenlabs2/all_recyclercache.git
+    47	17:44	git pull origin master
+    48	17:44	git pull origin master
+    49	17:44	rm -rf .git
+    50	17:44	git init
+    51	17:44	git remote add origin https://landenlabs@github.com/landenlabs2/all_recyclercache.git
+    52	17:44	git pull origin master
+    53	17:45	rm .git
+    54	17:45	rm -rf .git
+    55	17:45	git init
+    56	17:45	git remote add origin https://landenlabs@github.com/landenlabs/all_recyclercache.git
+    57	17:45	git pull origin master
+    58	17:45	git add .
+    59	17:45	git push
+    60	17:45	git status
+    61	17:45	git commit -m "first"
+    62	17:46	git reset gradle/wrapper/gradle-wrapper.jar
+    63	17:46	git status
+    64	17:46	git push
+    65	17:48	cd ..
+    66	17:48	dir
+    67	17:48	find . -name git\*
+    68	17:49	more ../../git-cmds.txt -ls
+    69	17:49	find . -name git\* -ls
+    70	17:49	more ./all-NetInfo/git-notes.txt
+    71	17:49	cd all-recycler-cache/
+    72	17:49	rm -rf .git
+    73	17:49	git init
+    74	17:50	git remote add origin https://landenlabs@github.com/landenlabs/all-recyclercache
+    75	17:50	./gradlew clean
+    76	17:50	git add .
+    77	17:50	git commit -m "first commit"
+    78	17:50	git push -u origin master
+    79	17:50	cp .././all-NetInfo/git-notes.txt .
+    80	17:50	more git-notes.txt
+    81	17:51	history
+    82	17:51	rm -rf .git
+    83	17:51	git init
+    84	17:51	git remote add origin https://github.com/landenlabs/all_recyclercache
+    85	17:51	git add .
+    86	17:51	git commit -m "first commit"
+    87	17:51	git push -u origin master
+    88	17:52	more git-notes.txt
+    89	17:52	rm -rf .git
+    90	17:52	git init
+    91	17:53	git remote add origin https://landenlabs@github.com/landenlabs/all_recyclercache
+    92	17:53	gr clean
+    93	17:53	git add .
+    94	17:53	git commit -m "first commit"
+    95	17:54	git push -u origin master
+    96	17:54	rm .git
+    97	17:54	git init
+    98	17:54	git remote add origin https://landenlabs2@github.com/landenlabs/all_recyclercache
+    99	17:54	git remote add origin https://landenlabs2@github.com/landenlabs2/all_recyclercache
+   100	17:54	git add .
+   101	17:54	git commit -m "first commit"
+   102	17:54	git push -u origin master
+   103	17:55	more .git/config
+   104	17:55	rm -rf .git
+   105	17:55	more .git/config
+   106	17:55	git remote add origin https://landenlabs2@github.com/landenlabs2/all_recyclercache
+   107	17:55	git remote add origin https://landenlabs@github.com/landenlabs/all_recyclercache
+   108	17:56	git init
+   109	17:56	git remote add origin https://landenlabs2@github.com/landenlabs2/all_recyclercache
+   110	17:56	more .git/config
+   111	17:56	git add .
+   112	17:56	git add .
+   113	17:56	git commit -m "first commit"
+   114	17:56	git push -u origin master
+   115	17:57	more .git/config
+   116	17:57	rm -rf .git
+   117	17:57	git init
+   118	17:57	git remote add origin https://landenlabs@github.com/landenlabs/all_recyclercache
+   119	17:57	git add .
+   120	17:57	git commit -m "first commit"
+   121	17:57	git push -u origin master
+   122	17:59	git push -u origin master
+   123	18:04	git push -u origin master
+   124	18:04	git status
+   125	18:04	git add .
+   126	18:04	git commit -m "first 2"
+   127	18:04	git status
+   128	18:07	git branch --help
+   129	18:07	git branch --help
+   130	18:07	git branch -d main
+   131	18:08	git branch -d -r main
+   132	18:08	git branch -a
+   133	18:08	git branch -a -r
+   134	18:09	history
+   135	18:09	git push -u origin main
+   136	18:09	git add .
+   137	18:09	git checkout main
+   138	18:09	git branch main
+   139	18:10	git branch
+   140	18:10	git checkout main
+   141	18:10	history > git-history.txt
