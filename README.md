@@ -53,6 +53,7 @@ Values appear after selecting 50 items and scrolling through entire list a few t
 The interesting (puzzling) is why did the RecyclerView create 20 items, when there at most about 6 items in view and only two layout types. 
 
 The RecyclerView default cache pool size is 2. See [reference documents linked at the top.](#Some-related-articles)
+
 <img src="images/reuse-50.jpg" width="300" >
 
 <hr>
