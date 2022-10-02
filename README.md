@@ -6,14 +6,24 @@
 The following screen samples show the impact of how ViewType controls how many 
 ViewHolders are cached for easy reuse.  
 
+Some related articles:
+- <a href="https://medium.com/android-news/anatomy-of-recyclerview-part-1-a-search-for-a-viewholder-404ba3453714">Anatomy of RecyclerView: a Search for ViewHolder by Pavel Shmakov (Mar, 2017) </a>a>
+- <a href="https://segmentfault.com/a/1190000040421118/en">In-depth understanding of the caching mechanisum of Android RecyclerView by xiangzhihong July-2021</a>a>
+
+
+
+The RecyclerView is populated with two possible item types which demonstrate two different layouts:
+- Planet 
+- Map 
+
 The controls at the top of the screen control how the RecyclerView is filled. 
 - Checkbox  "Unique View Type" controls whether the ViewType value is unique for all items 
-or returns one of two values associated with the two card types. 
+or returns one of two values associated with the two card types.
 - Radio buttons  "Select List Size" control how many items are placed in RecyclerView. 
 
 Status is displayed at the bottom of screen under the RecyclerView
-- Holders = # of ViewHolder instances active in memory
-- Attached = # of ViewHolders current attached to screen (in view).
+- Holders = # of ViewHolder instances active in memory (in view or cached)
+- Attached = # of ViewHolders currently attached to screen (in view).
 - List size = # of items in list passed to Adapter passed to RecyclerView
 - Cache Map/Planet - shows the number of items per ViewType in the RecyclerView pool cache. 
  The RecyclerView has two caches, this is only one of them. 
