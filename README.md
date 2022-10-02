@@ -47,9 +47,12 @@ Example shows ViewType set to card type for each of the two possible cards (Map 
 allowing the <b>RecyclerView</b> to reuse <b>ViewHolders</b> which go out of view. 
 List is populated with 50 semi-random items of two types ("planets" and "map" cards)
 Status on the bottom shows 20 ViewHolders created, 15 in memory and 6 attached to view.  
-There are 6 cards in full view and the RecyclerView is caching 8 additional (6+9=15 viewholders in memory)
+There are 6 cards in full view and the RecyclerView is caching 9 additional (6+9=15 viewholders in memory)
 
 Values appear after selecting 50 items and scrolling through entire list a few times. 
+The interesting (puzzling) is why did the RecyclerView create 20 items, when there at most about 6 items in view and only two layout types. 
+
+The RecyclerView default cache pool size is 2. See [reference documents linked at the top.](#Some-related-articles)
 <img src="images/reuse-50.jpg" width="400" >
 
 <hr>
@@ -57,14 +60,17 @@ Values appear after selecting 50 items and scrolling through entire list a few t
 ## ViewType unique per row (caching all items, no reuse)
 
 The ViewType returns a unique value for every item, resulting in no reuse and 
-every item created as you scroll with all items kept in cache. 50 items = 50 cached. 
-Nothing is reused.  
+every item created as you scroll with all items kept in memory. 50 items = 50 in memory. 
+Nothing is reused, but constructors only called once per item. 
 
 <img src="images/unique-50.jpg" width="400" >
 
 <hr>
 
 ## Short list (5 items, all in view) all items cached, no reuse.
+
+When the RecyclerView does not have to scroll because all items are in view, then every ViewHolder is created once. 
+There is no reuse and ViewType has no impact on memory savings. 
 
 <img src="images/reuse-5.jpg" width="400">
 
