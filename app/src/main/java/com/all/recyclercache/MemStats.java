@@ -7,21 +7,25 @@ import com.all.recyclercache.scroll.ScrollItemHolder;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Count active object instances.
+ * Memory Tracking - Count active object instances.
  *
- * See CountRefs for additional approach to tracking active instance count.
+ * See MemRefs for additional approach to tracking active instance count.
  */
 public class MemStats {
-   public final static AtomicInteger cntViewHolder  = new AtomicInteger(0);
    public final static AtomicInteger cntViewAttached  = new AtomicInteger(0);
 
+   // Memory Tracking solution #1
    public static void addViewHolder(ScrollItemHolder viewHolder) {
-      new CountRefs(viewHolder);
+      new MemRefs(viewHolder);
    }
 
-   /*
+   // Memory Tracking solution #2
+   // Track active instances using constructor and finalize - did not work with java 11+, see MemRefs
+   // public final static AtomicInteger cntViewHolder  = new AtomicInteger(0);
 
-   // Count active object instances using  PhantomReference - did not work with java 11+, see CountRefs
+   /*
+   // Memory Tracking solution #3
+   // Count active object instances using  PhantomReference - did not work with java 11+, see MemRefs
 
    public final static ArrayList< PhantomReference<ScrollItemHolder>> listOfHolderRefs = new ArrayList<>();
    public final static ReferenceQueue<ScrollItemHolder> refQueueHolders = new ReferenceQueue<ScrollItemHolder>();;

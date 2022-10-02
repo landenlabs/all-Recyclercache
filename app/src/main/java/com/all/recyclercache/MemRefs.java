@@ -8,14 +8,14 @@ import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Count active object instances.
+ * Memory tracking - Count active object instances.
  *
  * https://www.beyondjava.net/how-to-count-java-objects-in-memory
  */
-public class CountRefs  extends WeakReference<Object> {
+public class MemRefs extends WeakReference<Object> {
 
    public static ReferenceQueue<Object> queueOfDead = new ReferenceQueue<Object>();
-   public static HashMap<Long, CountRefs> keepGcFromRemovingUs = new HashMap<>();
+   public static HashMap<Long, MemRefs> keepGcFromRemovingUs = new HashMap<>();
 
    static {
       new BuryDeadThread().start();
@@ -25,7 +25,7 @@ public class CountRefs  extends WeakReference<Object> {
    public final static AtomicInteger activeObjects  = new AtomicInteger(0);
    private long currentQueue;
 
-   public CountRefs(Object object) {
+   public MemRefs(Object object) {
       super(object, queueOfDead);
       currentQueue = objectsCreated.getAndIncrement();
       keepGcFromRemovingUs.put(currentQueue, this);
@@ -41,9 +41,9 @@ public class CountRefs  extends WeakReference<Object> {
       public void run() {
          System.out.println("BuryDeadThread started");
          while (true) {
-            CountRefs ref;
+            MemRefs ref;
             try {
-               ref = (CountRefs) CountRefs.queueOfDead.remove();
+               ref = (MemRefs) MemRefs.queueOfDead.remove();
                ref.bury();
             } catch (InterruptedException e) {
                e.printStackTrace();

@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         memoryStress.add(makeMemoryStressString(2000));
 
         String statStr = String.format(Locale.US, "Holders=%d Attached=%d",
-                CountRefs.activeObjects.get(), //  MemStats.cntViewHolder.get(),
+                MemRefs.activeObjects.get(), //  MemStats.cntViewHolder.get(),
                 MemStats.cntViewAttached.get());
         String cacheStr = String.format(Locale.US,"List size=%d Cache Map=%d Planet=%d",
                 scrollItems.size(),
