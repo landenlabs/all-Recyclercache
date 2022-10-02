@@ -1,5 +1,7 @@
-// Dennis Lang
-// Copyright LanDen Labs 2022
+/*
+ * Dennis Lang
+ * Copyright (c) LanDen Labs 2022.
+ */
 package com.all.recyclercache.scroll;
 
 import android.view.View;

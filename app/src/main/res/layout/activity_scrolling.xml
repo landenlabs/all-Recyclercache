@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Dennis Lang
+  ~ Copyright (c) LanDen Labs 2022.
+  -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,22 +12,18 @@
     tools:context="com.all.recyclercache.MainActivity">
 
     <TextView
+        android:paddingStart="@dimen/pad_start"
         android:id="@+id/header"
         style="@style/text26"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#00f"
-        android:text="Test RecyclerView Caching" />
+        android:text="Test RecyclerView Cache/Reuse" />
 
-    <CheckBox
-        android:id="@+id/uniqueViewTypeCB"
-        style="@style/text26B"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff"
-        android:text="Unique View Type" />
+
 
     <Button
+        android:paddingStart="@dimen/pad_start"
         android:id="@+id/runGC"
         style="@style/text26B"
         android:layout_width="match_parent"
@@ -31,6 +32,7 @@
         android:visibility="gone" />
 
     <TextView
+        android:paddingStart="@dimen/pad_start"
         style="@style/text26B"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,7 +69,14 @@
             android:tag="200"
             android:text="200" />
     </RadioGroup>
-
+    <CheckBox
+        android:paddingStart="@dimen/pad_start"
+        android:id="@+id/uniqueViewTypeCB"
+        style="@style/text26B"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:text="Unique View Type" />
     <include layout="@layout/content_scrolling" />
 
     <TextView

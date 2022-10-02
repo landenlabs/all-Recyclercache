@@ -1,5 +1,7 @@
-// Dennis Lang
-// Copyright LanDen Labs 2022
+/*
+ * Dennis Lang
+ * Copyright (c) LanDen Labs 2022.
+ */
 package com.all.recyclercache.scroll;
 
 import android.view.View;
@@ -14,11 +16,14 @@ import java.lang.ref.WeakReference;
 
 /**
  * Recycler View Holder for Map item
+ *
+ * Views held in WeakRef to see if Garbage Collector will recover memory quicker
+ * because this object has no hard links back to Context and is Phantomed quicker
  */
 public class ScrollItemMapHolder extends ScrollItemHolder {
 
     private final int idx;
-    private WeakReference<TextView> txtViewRef;
+    private WeakReference<TextView> txtViewRef; // Use Ref to see if GC will recover holder quicker
 
     ScrollItemMapHolder(@NonNull View itemView, int idx) {
         super(itemView);

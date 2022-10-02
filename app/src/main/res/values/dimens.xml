@@ -1,4 +1,10 @@
+<!--
+  ~ Dennis Lang
+  ~ Copyright (c) LanDen Labs 2022.
+  -->
+
 <resources>
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="pad_start">10dp</dimen>
 </resources>

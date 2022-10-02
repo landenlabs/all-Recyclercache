@@ -1,8 +1,12 @@
-// Dennis Lang
-// Copyright LanDen Labs 2022
+/*
+ * Dennis Lang
+ * Copyright (c) LanDen Labs 2022.
+ */
 package com.all.recyclercache;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CheckBox;
@@ -25,21 +29,24 @@ import java.util.Locale;
 import java.util.Random;
 
 /**
- * Simple Android app to demonstrate how and when RecyclerView caches ViewHolders.
+ * Simple Android app to demonstrate how and when RecyclerView caches and reuses ViewHolders.
  *
- * The key is how you handle ViewType
+ * The key is how you handle ViewType:
+ *   - If unique value for every row item, then no reuse and every ViewHolder is created
+ *   - If small set of values uses, RecyclerView will manage separate caches for each type and reuse
+ *       NOTE - even with reuse, RecyclerView still appears to create more new ViewHolders than expected
+ *       if you scroll large list often.
  */
 public class MainActivity extends AppCompatActivity {
     private ScrollAdapter adapter;
     private ArrayList<ScrollItem> scrollItems;
     private RecyclerView recyclerView;
-    private TextView header;
     private TextView footer;
     private CheckBox uniqueViewTypeCB;
 
     private static final int UPDATE_MILLI = 1000;
     private UpdateStats updateStats = new UpdateStats();
-    private ArrayList<String> memoryStress = new ArrayList<>();
+    // private ArrayList<String> memoryStress = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white, getTheme()));
         setSupportActionBar(toolbar);
 
-        header = findViewById(R.id.header);
         footer = findViewById(R.id.footer);
         ((RadioGroup)findViewById(R.id.rb_list_size)).setOnCheckedChangeListener(this::listSizeRb);
 
@@ -78,13 +84,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void refresh() {
         // Clear out old view holders
-        adapter.notifyItemRangeRemoved(0,adapter.getItemCount());
-        recyclerView.getRecycledViewPool().clear();
+        // adapter.notifyItemRangeRemoved(0,adapter.getItemCount());
+        // recyclerView.getRecycledViewPool().clear();
+        // recyclerView.clearDisappearingChildren();
         recyclerView.setAdapter(null);
-        recyclerView.clearDisappearingChildren();
         recyclerView.removeAllViews();
 
         // Create new adapter
+        MemRefs.objectsCreated.set(0);
         adapter = new ScrollAdapter(this, scrollItems, uniqueViewTypeCB.isChecked());
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
@@ -99,17 +106,20 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateStats() {
         Runtime.getRuntime().gc();
-        memoryStress.add(makeMemoryStressString(2000));
 
-        String statStr = String.format(Locale.US, "Holders=%d Attached=%d",
+        // Attempt to force GC to perform cleanup, easier to call GC above.
+        // memoryStress.add(makeMemoryStressString(2000));
+
+        String statStr = String.format(Locale.US, "ViewHolders:\nCreated=%d Memory=%d Attach=%d",
+                MemRefs.objectsCreated.get(),
                 MemRefs.activeObjects.get(), //  MemStats.cntViewHolder.get(),
                 MemStats.cntViewAttached.get());
-        String cacheStr = String.format(Locale.US,"List size=%d Cache Map=%d Planet=%d",
+        String cacheStr = String.format(Locale.US,"\nList size=%d Cache Map=%d Planet=%d",
                 scrollItems.size(),
                 recyclerView.getRecycledViewPool().getRecycledViewCount(ScrollItem.ItemType.TYPE_MAP),
                 recyclerView.getRecycledViewPool().getRecycledViewCount(ScrollItem.ItemType.TYPE_PLANET));
-        String memStressStr = String.format(Locale.US, "Memory Stress count=%d", memoryStress.size());
-        footer.setText(statStr + "\n" + cacheStr + "\n" + memStressStr);
+        String memStressStr = ""; // String.format(Locale.US, "\nMemory Stress count=%d", memoryStress.size());
+        footer.setText(statStr + cacheStr +  memStressStr);
     }
 
     private String makeMemoryStressString(int strLen) {
@@ -156,12 +166,25 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_about) {
+            showAbout();
+            return true;
+        } else if (id == R.id.action_settings) {
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    private void showAbout() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.about_message)
+                .setTitle(R.string.about_title);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+    /**
+     * ---------------------------------------------------------------------------------------------
+     */
     class UpdateStats implements Runnable {
         @Override
         public void run() {
