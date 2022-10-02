@@ -55,8 +55,9 @@ Values appear after selecting 50 items and scrolling through entire list.
 
 ## ViewType unique per row (caching all items, poor reuse)
 
-- The ViewType is set to return a unique value for every item, resulting in no reuse and 
-every item created (result of scrolling) is kept in cache. 50 items = 50 cached. 
+The ViewType returns a unique value for every item, resulting in no reuse and 
+every item created as you scroll with all items kept in cache. 50 items = 50 cached. 
+Nothing is reused.  
 
 <img src="images/unique-50.jpg" width="400" >
 
@@ -66,4 +67,4 @@ every item created (result of scrolling) is kept in cache. 50 items = 50 cached.
 
 <img src="images/reuse-5.jpg" width="400">
 
-<img src="images/reuse-5.jpg" width="400">
+<img src="images/unique-5.jpg" width="400">
