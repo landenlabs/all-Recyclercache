@@ -30,8 +30,9 @@ Changing the list size causes a new list to be created, adapter to be rebuilt an
 the RecyclerView and <b>java garbage collector</b> to be called. 
 
 Status is displayed at the bottom of screen under the RecyclerView
-- Holders = Number of <b>ViewHolder</b> instances active in memory (in view or cached)
-- Attached = Number of <b>ViewHolders</b> currently attached to screen (in view).
+- Created = Number of <b>ViewHolder</b> instances created (called constructor)
+- Memory = Number of <b>ViewHolder</b> instances active in memory (in view or cached)
+- Attach = Number of <b>ViewHolders</b> currently attached to screen (in view).
 - List size = Number of <b>items</b> in list passed to Adapter passed to RecyclerView
 - Cache Map/Planet - shows the number of items per <b>ViewType</b> in the RecyclerView pool cache. 
  The RecyclerView has two caches, this is only one of them. See [reference documents linked at the top.](#Some-related-articles)
@@ -45,10 +46,10 @@ some stress on the memory system.  Not sure if this makes any difference.
 Example shows ViewType set to card type for each of the two possible cards (Map or Planet), 
 allowing the <b>RecyclerView</b> to reuse <b>ViewHolders</b> which go out of view. 
 List is populated with 50 semi-random items of two types ("planets" and "map" cards)
-Status on the bottom shows the active view Holder count is 13 and 6 are attached to the view. 
-There are 5 cards in full view, one must be partially in view and the RecyclerView is caching 7 additional (5+1+7=13 active viewholders)
+Status on the bottom shows 20 ViewHolders created, 15 in memory and 6 attached to view.  
+There are 6 cards in full view and the RecyclerView is caching 8 additional (6+9=15 viewholders in memory)
 
-Values appear after selecting 50 items and scrolling through entire list.
+Values appear after selecting 50 items and scrolling through entire list a few times. 
 <img src="images/reuse-50.jpg" width="400" >
 
 <hr>
