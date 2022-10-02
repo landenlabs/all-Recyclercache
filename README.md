@@ -53,7 +53,7 @@ Values appear after selecting 50 items and scrolling through entire list.
 
 <hr>
 
-## ViewType unique per row (caching all items, poor reuse)
+## ViewType unique per row (caching all items, no reuse)
 
 The ViewType returns a unique value for every item, resulting in no reuse and 
 every item created as you scroll with all items kept in cache. 50 items = 50 cached. 
