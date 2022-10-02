@@ -53,7 +53,7 @@ Values appear after selecting 50 items and scrolling through entire list a few t
 The interesting (puzzling) is why did the RecyclerView create 20 items, when there at most about 6 items in view and only two layout types. 
 
 The RecyclerView default cache pool size is 2. See [reference documents linked at the top.](#Some-related-articles)
-<img src="images/reuse-50.jpg" width="400" >
+<img src="images/reuse-50.jpg" width="300" >
 
 <hr>
 
@@ -63,7 +63,7 @@ The ViewType returns a unique value for every item, resulting in no reuse and
 every item created as you scroll with all items kept in memory. 50 items = 50 in memory. 
 Nothing is reused, but constructors only called once per item. 
 
-<img src="images/unique-50.jpg" width="400" >
+<img src="images/unique-50.jpg" width="300" >
 
 <hr>
 
