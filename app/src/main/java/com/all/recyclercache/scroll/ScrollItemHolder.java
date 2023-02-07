@@ -21,7 +21,7 @@ public abstract class ScrollItemHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
         // Count active instance of object.
-        // MemStats.cntViewHolder.incrementAndGet();
+        //   MemStats.cntViewHolder.incrementAndGet();
 
         // Alternate way to count active instances of object.
         MemStats.addViewHolder(this);

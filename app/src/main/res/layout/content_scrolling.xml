@@ -12,12 +12,17 @@
 
     <include layout="@layout/app_bar" />
 
-    <androidx.recyclerview.widget.RecyclerView
+     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_below="@+id/toolbar"
-        android:layout_above="@+id/footer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_above="@+id/footer"
+        android:layout_below="@+id/toolbar"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarSize="20dp"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbars="vertical" />
 
     <TextView
         android:background="@color/colorPrimary"

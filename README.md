@@ -9,6 +9,7 @@ Dt: Oct-2022
 
 This Android app demonstrates how <b>ViewType</b> impacts the caching and reuse of ViewHolders.
  
+<a href="https://github.com/landenlabs/all_recyclercache">Github project</a>
 
 ### Some related articles:
 - <a href="https://medium.com/android-news/anatomy-of-recyclerview-part-1-a-search-for-a-viewholder-404ba3453714">
