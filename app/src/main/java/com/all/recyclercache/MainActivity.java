@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         ((RadioGroup)findViewById(R.id.rb_list_size)).setOnCheckedChangeListener(this::listSizeRb);
 
         uniqueViewTypeCB = findViewById(R.id.uniqueViewTypeCB);
+        uniqueViewTypeCB.setChecked(true);  // default unique
         uniqueViewTypeCB.setOnCheckedChangeListener((view,checked) -> { refresh(); });
         findViewById(R.id.runGC).setOnClickListener( view -> { runGC(); });
         recyclerView = findViewById(R.id.recyclerView);
@@ -99,13 +100,17 @@ public class MainActivity extends AppCompatActivity {
         updateStats();
     }
 
-    private void runGC() {
+    private void garbageCollect() {
         Runtime.getRuntime().gc();
+    }
+
+    private void runGC() {
+        garbageCollect();
         updateStats();
     }
 
     private void updateStats() {
-        Runtime.getRuntime().gc();
+        // garbageCollect();
 
         // Attempt to force GC to perform cleanup, easier to call GC above.
         // memoryStress.add(makeMemoryStressString(2000));

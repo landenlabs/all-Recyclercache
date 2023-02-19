@@ -29,14 +29,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Run garbarge collector"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
     <TextView
         android:paddingStart="@dimen/pad_start"
         style="@style/text26B"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Select List Size:" />
+        android:text="List Size:" />
 
     <RadioGroup
         android:id="@+id/rb_list_size"
