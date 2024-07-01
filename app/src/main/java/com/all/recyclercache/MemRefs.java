@@ -11,12 +11,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Memory tracking - Count active object instances.
- *
+ * <p>
  * https://www.beyondjava.net/how-to-count-java-objects-in-memory
  */
 public class MemRefs extends WeakReference<Object> {
 
-   public static ReferenceQueue<Object> queueOfDead = new ReferenceQueue<Object>();
+   public static ReferenceQueue<Object> queueOfDead = new ReferenceQueue<>();
    public static HashMap<Long, MemRefs> keepGcFromRemovingUs = new HashMap<>();
 
    static {
@@ -25,7 +25,7 @@ public class MemRefs extends WeakReference<Object> {
 
    public final static AtomicInteger objectsCreated  = new AtomicInteger(0);
    public final static AtomicInteger activeObjects  = new AtomicInteger(0);
-   private long currentQueue;
+   private final long currentQueue;
 
    public MemRefs(Object object) {
       super(object, queueOfDead);

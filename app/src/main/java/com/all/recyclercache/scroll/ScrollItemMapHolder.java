@@ -16,7 +16,7 @@ import java.lang.ref.WeakReference;
 
 /**
  * Recycler View Holder for Map item
- *
+ * <p>
  * Views held in WeakRef to see if Garbage Collector will recover memory quicker
  * because this object has no hard links back to Context and is Phantomed quicker
  */

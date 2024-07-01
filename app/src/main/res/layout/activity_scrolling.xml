@@ -20,8 +20,6 @@
         android:background="#00f"
         android:text="Test RecyclerView Cache/Reuse" />
 
-
-
     <Button
         android:paddingStart="@dimen/pad_start"
         android:id="@+id/runGC"

@@ -6,7 +6,6 @@ package com.all.recyclercache;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CheckBox;
@@ -30,12 +29,17 @@ import java.util.Random;
 
 /**
  * Simple Android app to demonstrate how and when RecyclerView caches and reuses ViewHolders.
- *
+ * <p>
  * The key is how you handle ViewType:
  *   - If unique value for every row item, then no reuse and every ViewHolder is created
  *   - If small set of values uses, RecyclerView will manage separate caches for each type and reuse
  *       NOTE - even with reuse, RecyclerView still appears to create more new ViewHolders than expected
  *       if you scroll large list often.
+ * <p>
+ *  Some RecyclerView performance settings:
+ *    - recyclerView.setHasFixedSize(true)      ; rows are fixed width and height
+ *    - recyclerView.setItemViewCacheSize(20)   ; number offscreen views to retain
+ *    - adapter.setHasStableIds(true)           ; If each item has unique ID and source is a list
  */
 public class MainActivity extends AppCompatActivity {
     private ScrollAdapter adapter;
@@ -45,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox uniqueViewTypeCB;
 
     private static final int UPDATE_MILLI = 1000;
-    private UpdateStats updateStats = new UpdateStats();
+    private final UpdateStats updateStats = new UpdateStats();
     // private ArrayList<String> memoryStress = new ArrayList<>();
 
     @Override
@@ -62,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
 
         uniqueViewTypeCB = findViewById(R.id.uniqueViewTypeCB);
         uniqueViewTypeCB.setChecked(true);  // default unique
-        uniqueViewTypeCB.setOnCheckedChangeListener((view,checked) -> { refresh(); });
-        findViewById(R.id.runGC).setOnClickListener( view -> { runGC(); });
+        uniqueViewTypeCB.setOnCheckedChangeListener((view,checked) -> refresh());
+        findViewById(R.id.runGC).setOnClickListener( view -> runGC());
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -170,7 +174,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_about) {
             showAbout();
             return true;

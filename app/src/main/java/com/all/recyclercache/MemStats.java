@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Memory Tracking - Count active object instances.
- *
+ * <p>
  * See MemRefs for additional approach to tracking active instance count.
  */
 public class MemStats {

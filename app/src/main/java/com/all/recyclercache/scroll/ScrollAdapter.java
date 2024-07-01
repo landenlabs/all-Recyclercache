@@ -48,8 +48,7 @@ public class ScrollAdapter extends RecyclerView.Adapter<ScrollItemHolder> {
     @Override
     public ScrollItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (uniqueViewHolder) {
-            int position = viewType;
-            return items.get(position).onCreateViewHolder(parent, position);
+            return items.get(viewType).onCreateViewHolder(parent, viewType);
         } else {
             return holderMakersByType.get(viewType).onCreateViewHolder(parent, viewType);
         }
